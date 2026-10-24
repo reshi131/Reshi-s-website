@@ -1,0 +1,224 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reshi's Web</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #080b16, #17152b, #090d18);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 25px;
+        }
+
+        .clock {
+            font-size: 17px;
+            color: #b8b8d1;
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            font-size: clamp(38px, 7vw, 64px);
+            margin-bottom: 12px;
+            background: linear-gradient(90deg, #00dbff, #a78bfa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .subtitle {
+            color: #a8adc5;
+            margin-bottom: 35px;
+            text-align: center;
+        }
+
+        .search-box {
+            width: min(600px, 100%);
+            display: flex;
+            background: #191d2e;
+            border: 1px solid #343952;
+            border-radius: 18px;
+            padding: 8px;
+            box-shadow: 0 10px 40px #0005;
+        }
+
+        .search-box input {
+            flex: 1;
+            min-width: 0;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: white;
+            font-size: 16px;
+            padding: 13px;
+        }
+
+        .search-box button {
+            background: #7667f8;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 12px 18px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .search-box button:hover {
+            background: #9388ff;
+        }
+
+        .shortcuts {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 18px;
+            margin-top: 35px;
+        }
+
+        .shortcut {
+            width: 100px;
+            padding: 18px 8px;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            background: #191d2e;
+            border: 1px solid #30354d;
+            border-radius: 16px;
+            transition: 0.2s;
+        }
+
+        .shortcut:hover {
+            transform: translateY(-5px);
+            border-color: #7667f8;
+            background: #252943;
+        }
+
+        .icon {
+            display: block;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 18px;
+            color: #777d98;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        @media (max-height: 550px) {
+            footer {
+                position: static;
+                margin-top: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="clock" id="clock">Loading time...</div>
+
+    <h1>Reshi's Web</h1>
+
+    <p class="subtitle">
+        Your World. Your Search. Your Space.
+    </p>
+
+    <form class="search-box"
+          action="https://www.google.com/search"
+          method="GET">
+
+        <input
+            type="text"
+            name="q"
+            placeholder="Search anything on Google..."
+            aria-label="Search Google"
+            required
+        >
+
+        <button type="submit">Search 🔎</button>
+    </form>
+
+    <div class="shortcuts">
+
+        <a class="shortcut"
+           href="https://www.youtube.com"
+           target="_blank" rel="noopener">
+            <span class="icon">▶️</span>
+            YouTube
+        </a>
+
+        <a class="shortcut"
+           href="https://www.facebook.com"
+           target="_blank" rel="noopener">
+            <span class="icon">📘</span>
+            Facebook
+        </a>
+
+        <a class="shortcut"
+           href="https://mail.google.com"
+           target="_blank" rel="noopener">
+            <span class="icon">✉️</span>
+            Gmail
+        </a>
+
+        <a class="shortcut"
+           href="https://www.google.com"
+           target="_blank" rel="noopener">
+            <span class="icon">🌐</span>
+            Google
+        </a>
+
+    </div>
+
+    <footer>
+        © 2026 Reshi's Web | Created with ❤️
+    </footer>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+
+            const time = now.toLocaleTimeString("en-BD", {
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+                hour12: true,
+                timeZone: "Asia/Dhaka"
+            });
+
+            const date = now.toLocaleDateString("en-GB", {
+                weekday: "long",
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+                timeZone: "Asia/Dhaka"
+            });
+
+            document.getElementById("clock").textContent =
+                time + " | " + date;
+        }
+
+        updateClock();
+        setInterval(updateClock, 1000);
+    </script>
+
+</body>
+</html>
+```
